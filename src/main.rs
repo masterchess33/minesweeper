@@ -1,11 +1,12 @@
-use crate::minesweeper::{instantiate_board, Size};
+use crate::board::{instantiate_board, Size};
 
-mod minesweeper;
+mod board;
 mod terminal_view;
+mod game;
 
 fn main() {
 
-    let mut board = minesweeper::create_board(Size::Small);
+    let mut board = board::create_board(Size::Small);
     instantiate_board(&mut board);
     terminal_view::print_board(board);
 }

@@ -22,7 +22,7 @@ impl Default for Cell{
     fn default() -> Cell {
         Cell{
             mine: false,
-            discovered: true,
+            discovered: false,
             number:0
         }
     }
@@ -50,7 +50,6 @@ pub fn instantiate_board(board: &mut Vec<Vec<Cell>>){
     let size = board.len();
     for i in 0..size {
         for j in 0..size {
-            board[i][j].discovered = true;
             match set_mine(Density::Light) {
                 true => {
                     board[i][j].mine = true;
@@ -84,6 +83,7 @@ fn set_mine(density: Density) -> bool{
         false
     }
 }
+
 
 fn try_increase_cell_number(x: Option<usize>, y: Option<usize>, board: &mut Vec<Vec<Cell>>) -> (){
     if x == None || y == None {
